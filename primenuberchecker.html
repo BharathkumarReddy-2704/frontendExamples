@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime number checker</title>
+    <style>
+        body{
+            display:flex;
+            justify-content: center;
+        
+        }
+        .card{
+            border:1px solid black;
+            width:500px;
+            height:500px;
+            background-color: rgb(210, 202, 202);
+            border-radius: 20px;
+            padding:30px;
+        }.card-title{
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .input-given{
+            text-align: center;
+            
+        }
+        input{
+            margin-top: 30px;
+            width:400px;
+            height:50px;
+            border:1px solid white;
+            border-radius: 20px; 
+        }
+        .buttons{
+            margin-top: 30px;
+            display:flex;
+            justify-content: space-around;
+        }
+        button{
+            width:100px;
+            font-size: 20px;
+            border:1px solid black;
+            border-radius: 10px;
+            padding:10px;
+        }
+        .display{
+            margin-top: 30px;
+            width:400px;
+            height:200px;
+            border:1px solid white;
+            border-radius: 30px;
+            background-color: rgb(185, 177, 177);
+            padding:30px;
+            margin-left:20px;
+        }.message{
+            text-align: center;
+            color:black;
+            padding:30px;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-title">
+            Prime Number Finder
+        </div>
+        <div class="input-given">
+                <input type="number" name="number" id="input-field" placeholder="enter the value of number" class="form-controls w-400">
+        </div>
+        <div class="buttons">
+            <button onclick="" id="btn-clear">Clear</button>
+            <button onclick="" id="btn-submit">Submit</button>
+        </div>
+        <div class="display">
+            <p class="message" id="result-message">
+                Result
+            </p>
+
+
+        </div>
+
+    </div>
+    <script type=text/javascript>
+     function checkPrime(num){
+        if(num<=1){
+            return false;
+        }
+        for (
+              let i = 2;
+              i <= Math.sqrt(num); i++
+        ) {
+               if (num % i === 0) {
+                 return false;
+             }
+        }
+          return true;
+     }
+     document.getElementById("btn-submit")
+     .addEventListener("click",
+      function(){
+        let num=document.getElementById("input-field").value;
+        console.log("num"+num);
+        let result=checkPrime(num);
+        console.log(result);
+        if(result){
+            document.getElementById("result-message").innerHTML=
+            num+" is a prime number"; 
+            console.log("result printed") ;
+        }else{
+            document.getElementById("result-message").innerHTML=
+            num+" is not a prime Number";
+            console.log("result  not printed") ;
+        }
+     }
+    );
+    document.getElementById("btn-clear")
+    .addEventListener("click", () => {
+        document.getElementById("input-field").value = "";
+        document.getElementById("result-message").innerHTML = "result";
+    })
+
+    </script>
+
+    
+</body>
+</html>
